@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "xaif_eval"
+version = "0.0.9"
+authors = [
+  { name="DEBELA", email="dabookoo@gmail.com" },
+]
+description = "xaif package"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/debelatesfaye/xaif"
+Issues = "https://github.com/debelatesfaye/xaif/issues"
