@@ -96,7 +96,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Authors
 
-- DEBELA - [dabookoo@gmail.com](mailto:dabookoo@gmail.com)
+- DEBELA - [d.t.z.gemechu@dundee.ac.uk](mailto:d.t.z.gemechu@dundee.ac.uk)
 
 ## Acknowledgments
 
