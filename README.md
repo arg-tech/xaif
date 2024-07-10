@@ -12,7 +12,7 @@
 
 - Validate AIF JSON structures
 - Generate unique node and edge IDs
-- Add and manage argument components (L nodes, I nodes, edges)
+- Add and manage argument components
 
 
 ## Installation
