@@ -1,4 +1,4 @@
-# xaif_eval
+# xaif
 
 [![PyPI version](https://badge.fury.io/py/xaif_eval.svg)](https://badge.fury.io/py/xaif_eval)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,21 +6,46 @@
 
 ## Overview
 
-`xaif_eval` is a Python library designed for handling and manipulating AIF (Argument Interchange Format) structures. It provides utilities to validate, traverse, and manipulate AIF JSON structures, facilitating the development and evaluation of argumentation frameworks.
+`xaif` is a Python library for working with Argument Interchange Format (AIF), primarily designed to facilitate the development, manipulation, and evaluation of argumentat structures. This package provides essential utilities to validate, traverse, and manipulate AIF-compliant JSON structures, enabling users to effectively work with complex argumentation data.
+
+## xAIF Format
+
+Here is an example of empty `xAIF` JSON format:
+
+```json
+{
+  "AIF": {
+    "nodes": [],
+    "edges": [],
+    "schemefulfillments": [],
+    "descriptorfulfillments": [],
+    "participants": [],
+    "locutions": []
+  },
+  "text": "",
+  "dialog": true,
+  "OVA": {
+    "firstname": "",
+    "surname": "",
+    "url": "",
+    "nodes": [],
+    "edges": []
+  }
+}
+```
 
 ## Features
 
-- Validate AIF JSON structures
-- Generate unique node and edge IDs
-- Add and manage argument components
+- Manage argument components: Add and manipulate various components of an argumentation framework, including relations, nodes, and edges.
+- Export data in CSV format: Generate tabular representations of argument components with their respective relation types.
 
 
 ## Installation
 
-You can install the `xaif_eval` package via pip:
+You can install the `xaif` package via pip:
 
 ```sh
-pip install xaif_eval
+pip install xaif
 ```
 
 ## Usage
@@ -28,13 +53,13 @@ pip install xaif_eval
 ### Importing the Library
 
 ```python
-from xaif_eval import AIF
+from xaif import AIF
 ```
 
 ### Example
 
 ```python
-from xaif_eval import AIF
+from xaif import AIF
 
 # Sample xAIF JSON 
 aif= {
@@ -169,27 +194,56 @@ aif= {
   }
 }
 
-# Initialize the AIF object
-aif = AIF(xaif)
 
-# Check if the AIF JSON is valid
-is_valid = aif.is_valid_json_aif()
-print(f"Is valid AIF JSON: {is_valid}")
+# Initialize the AIF object with xAIF data (AIF data structure provided as input)
+aif = AIF(xaif_data)
 
-# Check if the AIF JSON is a dialog
-is_dialog = aif.is_json_aif_dialog()
-print(f"Is dialog: {is_dialog}")
+# Example: Working with xAIF in the AIF Class
 
-# Get the next max node ID
-next_node_id = aif.get_next_max_id('nodes', 'nodeID')
-print(f"Next node ID: {next_node_id}")
+# Initialize the AIF object with xAIF data (AIF data structure provided as input)
+# Here, 'xaif_data' is expected to be a valid xAIF structure in JSON format
+aif = AIF(xaif_data)
 
-# Get the speaker of a node
-speaker = aif.get_speaker(1)
-print(f"Speaker: {speaker}")
+# Alternatively, initialize the AIF object with raw text data.
+# The AIF object will automatically create locutions and other necessary components from the provided text.
+aif = AIF("First Sentence. ")
 
-# Add argument relation
-aif.add_component("argument_relation", Relation_type, I_nodeID-1, I_nodeID-2)
+# Adding components to the AIF object:
+
+# 1. Adding a new locution (a statement made by a speaker)
+# 'component_type' is specified as "locution", and you provide the 'text' of the locution and the 'speaker' name.
+# The next available ID (1 in this case) will be automatically assigned to this locution.
+aif.add_component(component_type="locution", text="Second Sentence.", speaker="Default Speaker")
+
+# 2. Adding a proposition (a logical statement associated with a locution)
+# The 'component_type' is specified as "proposition", and you provide the locution ID (Lnode_ID) and the proposition text.
+# The associated locution ID (0) is required. 
+# This creates an I-node (proposition node) with the next available ID (2), and a YA (Default Illocuting) node with ID 3.
+aif.add_component(component_type="proposition", Lnode_ID=0, proposition="First sentence.")
+
+# 3. Adding another proposition (another logical statement associated with another locution)
+# Here, the 'component_type' is again "proposition", and the associated locution ID (1) is required.
+# This creates an I-node with ID 4 and a YA-node with ID 5 to anchor the relation between the I-node and the associated locution.
+aif.add_component(component_type="proposition", Lnode_ID=1, proposition="Second sentence.")
+
+# 4. Adding an argument relation (representing the logical connection between propositions)
+# 'component_type' is specified as "argument_relation", and you provide the relation type (e.g., "RA" for default inference).
+# Here, you are creating an argument relation between two I-nodes (IDs 2 and 4), with the relation type "RA".
+# This creates an RA node and edges between the I-nodes and the RA-node.
+aif.add_component(component_type="argument_relation", relation_type="RA", iNode_ID2=2, iNode_ID1=4)
+
+# Print the generated xAIF structure to visualize the entire argumentation framework
+print(aif.xaif)
+
+# Exporting the data:
+# To export the argument relations in CSV format, use the get_csv method with "argument-relation" as the argument.
+print(aif.get_csv("argument-relation"))  # Exports proposition pairs with argument relations in tabular (CSV) format.
+
+# To export the locution data in CSV format, use the get_csv method with "locution" as the argument.
+print(aif.get_csv("locution"))  # Exports locution data in tabular (CSV) format.
+
+
+
 ```
 
 ## Documentation

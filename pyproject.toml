@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "xaif_eval"
-version = "0.1.1"
+name = "xaif"
+version = "0.3.4"
 authors = [
   { name="DEBELA", email="dabookoo@gmail.com" },
 ]
@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/debelatesfaye/xaif"
-Issues = "https://github.com/debelatesfaye/xaif/issues"
+Homepage = "https://github.com/arg-tech/xaif"
+Issues = "https://github.com/arg-tech/xaif/issues"
