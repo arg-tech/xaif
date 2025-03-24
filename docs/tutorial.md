@@ -1,5 +1,20 @@
 # xAIF (Extended Argumentation Interchange Format) Documentation
 
+
+## Table of Contents
+1. [Overview](#overview)
+2. [Features of xAIF](#features-of-xaif)
+3. [Structure of xAIF](#structure-of-xaif)
+   - [Main Components](#main-components)
+4. [Example xAIF JSON](#example-xaif-json)
+   - [Blank example](#blank-example)
+   - [Basic xAIF Example](#basic-xaif-example)
+   - [An example from OVA](#an-example-from-ova)
+   - [An example with OVA, PropositionClassifier and Skeptic](#An-example-with-OVA-PropositionClassifier-and-Skeptic)
+5. [ xaif library](# xaif-library)
+
+
+
 ## Overview
 
 xAIF (Extended Argumentation Interchange Format) is an extension of the AIF (Argumentation Interchange Format) [AIF Specification](https://www.arg-tech.org/wp-content/uploads/2011/09/aif-spec.pdf), designed to handle more flexible and dynamic argument structures in environments of incremental processing. AIF imposes certain constraints, such as requiring relations to have exactly one consequent and at least one antecedent, and limiting interconnections between propositions to relations. While these constraints are valuable in a fully formed argument structure, they can be too restrictive for environments where arguments are being built piecemeal or where intermediate annotations are needed. This is where xAIF comes in. It extends the AIF to allow for both **underspecified** and **overspecified** argumentation structures, making it a more versatile tool for argumentation representation.
