@@ -1793,7 +1793,7 @@ aif.add_component(component_type="argument_relation", relation_type="RA", iNode_
 # Print the generated xAIF structure to visualize the entire argumentation framework
 print(aif.xaif)
 
-# Exporting the data:
+# Exporting the data: #
 # To export the argument relations in CSV format, use the get_csv method with "argument-relation" as the argument.
 print(aif.get_csv("argument-relation"))  # Exports proposition pairs with argument relations in tabular (CSV) format.
 
