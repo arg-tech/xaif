@@ -11,8 +11,7 @@
    - [Basic xAIF Example](#basic-xaif-example)
    - [An example from OVA](#an-example-from-ova)
    - [An example with OVA, PropositionClassifier and Skeptic](#An-example-with-OVA-PropositionClassifier-and-Skeptic)
-5. [ xaif library](# xaif-library)
-
+5. [xaif library](#xaif-library)
 
 
 ## Overview
