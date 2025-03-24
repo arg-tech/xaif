@@ -248,19 +248,19 @@ print(aif.get_csv("locution"))  # Exports locution data in tabular (CSV) format.
 
 ## Documentation
 
-The full documentation is available at [xaif_eval Documentation](https://github.com/debelatesfaye/xaif).
+The full documentation is available at [xaif_eval Documentation](https://github.com/arg-tech/xaif/blob/main/docs/).
 
 ## Contributing
 
-Contributions are welcome! Please visit the [Contributing Guidelines](https://github.com/debelatesfaye/xaif/blob/main/CONTRIBUTING.md) for more information.
+Contributions are welcome! Please visit the [Contributing Guidelines](https://github.com/arg-tech/xaif) for more information.
 
 ## Issues
 
-If you encounter any problems, please file an issue at the [Issue Tracker](https://github.com/debelatesfaye/xaif/issues).
+If you encounter any problems, please file an issue at the [Issue Tracker](https://github.com/arg-tech/xaif/issues).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/debelatesfaye/xaif/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/arg-tech/xaif/LICENSE) file for details.
 
 ## Authors
 

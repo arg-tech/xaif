@@ -29,6 +29,33 @@ xAIF is represented as a JSON object that contains several key sections. Below i
 
 ### Example xAIF JSON
 
+#### Blank example
+
+```json
+
+{
+	"AIF": {
+		"nodes": [],
+		"edges": [],
+		"schemefulfillments": [],
+		"descriptorfulfillments": [],
+		"participants": [],
+		"locutions": []
+	},
+	"text": "",
+  	"dialog": true,
+	"OVA": {
+		"firstname": "",
+		"surname": "",
+		"url": "",
+		"nodes": [],
+		"edges": []
+	}
+}
+
+```
+
+
 ```json
 {
   "AIF": {
@@ -161,6 +188,360 @@ xAIF is represented as a JSON object that contains several key sections. Below i
     "txt": " Speaker 1 <span class=\"highlighted\" id=\"0\">disagreements between party members are entirely to be expected.</span>.<br><br> Speaker 2 <span class=\"highlighted\" id=\"1\">the SNP has disagreements.</span>.<br><br> Speaker 1 <span class=\"highlighted\" id=\"2\">it's not uncommon for there to be disagreements between party members. </span>.<br><br>"
   }
 }
+```
+
+#### An example from OVA
+
+```json
+{
+	"AIF": {
+		"nodes": [{
+			"nodeID": "2_164926129380455983",
+			"text": "A",
+			"type": "I"
+		}, {
+			"nodeID": "3_164926129380455983",
+			"text": "Participant Rachel: A",
+			"type": "L"
+		}, {
+			"nodeID": "4_164926129380455983",
+			"text": "Analysing",
+			"type": "YA"
+		}, {
+			"nodeID": "5_164926129380455983",
+			"text": "Anon: Participant Rachel: A",
+			"type": "L"
+		}, {
+			"nodeID": "6_164926129380455983",
+			"text": "Asserting",
+			"type": "YA"
+		}, {
+			"nodeID": "15_164926162804546033",
+			"text": "B",
+			"type": "I"
+		}, {
+			"nodeID": "16_164926162804546033",
+			"text": "Participant Rachel: B",
+			"type": "L"
+		}, {
+			"nodeID": "17_164926162804546033",
+			"text": "Analysing",
+			"type": "YA"
+		}, {
+			"nodeID": "18_164926162804546033",
+			"text": "Anon: Participant Rachel: B",
+			"type": "L"
+		}, {
+			"nodeID": "19_164926162804546033",
+			"text": "Asserting",
+			"type": "YA"
+		}, {
+			"nodeID": "20_164926162804546033",
+			"text": "Default Transition",
+			"type": "TA"
+		}, {
+			"nodeID": "21_164926162804546033",
+			"text": "Default Inference",
+			"type": "RA"
+		}, {
+			"nodeID": "22_164926162804546033",
+			"text": "Arguing",
+			"type": "YA"
+		}],
+		"edges": [{
+			"edgeID": 1,
+			"fromID": "4_164926129380455983",
+			"toID": "3_164926129380455983"
+		}, {
+			"edgeID": 2,
+			"fromID": "5_164926129380455983",
+			"toID": "4_164926129380455983"
+		}, {
+			"edgeID": 3,
+			"fromID": "3_164926129380455983",
+			"toID": "6_164926129380455983"
+		}, {
+			"edgeID": 4,
+			"fromID": "6_164926129380455983",
+			"toID": "2_164926129380455983"
+		}, {
+			"edgeID": 5,
+			"fromID": "17_164926162804546033",
+			"toID": "16_164926162804546033"
+		}, {
+			"edgeID": 6,
+			"fromID": "18_164926162804546033",
+			"toID": "17_164926162804546033"
+		}, {
+			"edgeID": 7,
+			"fromID": "16_164926162804546033",
+			"toID": "19_164926162804546033"
+		}, {
+			"edgeID": 8,
+			"fromID": "19_164926162804546033",
+			"toID": "15_164926162804546033"
+		}, {
+			"edgeID": 9,
+			"fromID": "3_164926129380455983",
+			"toID": "20_164926162804546033"
+		}, {
+			"edgeID": 10,
+			"fromID": "20_164926162804546033",
+			"toID": "16_164926162804546033"
+		}, {
+			"edgeID": 11,
+			"fromID": "15_164926162804546033",
+			"toID": "21_164926162804546033"
+		}, {
+			"edgeID": 12,
+			"fromID": "21_164926162804546033",
+			"toID": "2_164926129380455983"
+		}, {
+			"edgeID": 13,
+			"fromID": "20_164926162804546033",
+			"toID": "22_164926162804546033"
+		}, {
+			"edgeID": 14,
+			"fromID": "22_164926162804546033",
+			"toID": "21_164926162804546033"
+		}],
+		"schemefulfillments": [{
+			"nodeID": "4_164926129380455983",
+			"schemeID": "75"
+		}, {
+			"nodeID": "6_164926129380455983",
+			"schemeID": "74"
+		}, {
+			"nodeID": "17_164926162804546033",
+			"schemeID": "75"
+		}, {
+			"nodeID": "19_164926162804546033",
+			"schemeID": "74"
+		}, {
+			"nodeID": "20_164926162804546033",
+			"schemeID": "82"
+		}, {
+			"nodeID": "21_164926162804546033",
+			"schemeID": "72"
+		}, {
+			"nodeID": "22_164926162804546033",
+			"schemeID": "80"
+		}],
+		"descriptorfulfillments": [],
+		"participants": [{
+			"participantID": 1,
+			"firstname": "Participant",
+			"surname": "Rachel"
+		}, {
+			"participantID": 2,
+			"firstname": "Participant",
+			"surname": "Carolyn"
+		}, {
+			"participantID": 3,
+			"firstname": "Participant",
+			"surname": "Mo"
+		}, {
+			"participantID": 4,
+			"firstname": "Participant",
+			"surname": "Zoe"
+		}, {
+			"participantID": 5,
+			"firstname": "Participant",
+			"surname": "Claire"
+		}, {
+			"participantID": 6,
+			"firstname": "Participant",
+			"surname": "Lee"
+		}, {
+			"participantID": 7,
+			"firstname": "Participant",
+			"surname": "Sally"
+		}, {
+			"participantID": 8,
+			"firstname": "Participant",
+			"surname": "Kalbir"
+		}, {
+			"participantID": 9,
+			"firstname": "Participant",
+			"surname": "Alice"
+		}, {
+			"participantID": 10,
+			"firstname": "Anne",
+			"surname": "Robinson"
+		}, {
+			"participantID": 11,
+			"firstname": "Diane",
+			"surname": "Munday"
+		}, {
+			"participantID": 12,
+			"firstname": "Neena",
+			"surname": "Modi"
+		}, {
+			"participantID": 13,
+			"firstname": "David",
+			"surname": "Steel"
+		}, {
+			"participantID": 14,
+			"firstname": "Neil",
+			"surname": "Lyndon"
+		}],
+		"locutions": [{
+			"nodeID": "3_164926129380455983",
+			"personID": 1,
+			"start": "2021-11-11 21:50:00",
+			"end": null
+		}, {
+			"nodeID": "16_164926162804546033",
+			"personID": "1",
+			"start": "2021-11-11 21:50:01",
+			"end": null
+		}]
+	},
+	"text": "<span id=\"node3_164926129380455983\" class=\"highlighted\">A</span> because <span id=\"node16_164926162804546033\" class=\"highlighted\">B</span><br>",
+	"OVA": {
+		"firstname": "Anon",
+		"surname": "User",
+		"url": "",
+		"nodes": [{
+			"nodeID": "2_164926129380455983",
+			"visible": true,
+			"x": 273,
+			"y": 140,
+			"timestamp": ""
+		}, {
+			"nodeID": "3_164926129380455983",
+			"visible": true,
+			"x": 723,
+			"y": 140,
+			"timestamp": "Thu Nov 11 2021 21:50:00 GMT+0000 (Greenwich Mean Time)"
+		}, {
+			"nodeID": "4_164926129380455983",
+			"visible": false,
+			"x": 0,
+			"y": 0,
+			"timestamp": ""
+		}, {
+			"nodeID": "5_164926129380455983",
+			"visible": false,
+			"x": 0,
+			"y": 0,
+			"timestamp": ""
+		}, {
+			"nodeID": "6_164926129380455983",
+			"visible": true,
+			"x": 498,
+			"y": 140,
+			"timestamp": ""
+		}, {
+			"nodeID": "15_164926162804546033",
+			"visible": true,
+			"x": "257",
+			"y": "275",
+			"timestamp": ""
+		}, {
+			"nodeID": "16_164926162804546033",
+			"visible": true,
+			"x": "714",
+			"y": "280",
+			"timestamp": "Thu Nov 11 2021 21:50:01 GMT+0000 (Greenwich Mean Time)"
+		}, {
+			"nodeID": "17_164926162804546033",
+			"visible": false,
+			"x": 0,
+			"y": 0,
+			"timestamp": ""
+		}, {
+			"nodeID": "18_164926162804546033",
+			"visible": false,
+			"x": 0,
+			"y": 0,
+			"timestamp": ""
+		}, {
+			"nodeID": "19_164926162804546033",
+			"visible": true,
+			"x": "464",
+			"y": "271",
+			"timestamp": ""
+		}, {
+			"nodeID": "20_164926162804546033",
+			"visible": true,
+			"x": 717.5,
+			"y": 220,
+			"timestamp": ""
+		}, {
+			"nodeID": "21_164926162804546033",
+			"visible": true,
+			"x": 274.5,
+			"y": 218.5,
+			"timestamp": ""
+		}, {
+			"nodeID": "22_164926162804546033",
+			"visible": true,
+			"x": "464",
+			"y": "213",
+			"timestamp": ""
+		}],
+		"edges": [{
+			"fromID": "4_164926129380455983",
+			"toID": "3_164926129380455983",
+			"visible": false
+		}, {
+			"fromID": "5_164926129380455983",
+			"toID": "4_164926129380455983",
+			"visible": false
+		}, {
+			"fromID": "3_164926129380455983",
+			"toID": "6_164926129380455983",
+			"visible": true
+		}, {
+			"fromID": "6_164926129380455983",
+			"toID": "2_164926129380455983",
+			"visible": true
+		}, {
+			"fromID": "17_164926162804546033",
+			"toID": "16_164926162804546033",
+			"visible": false
+		}, {
+			"fromID": "18_164926162804546033",
+			"toID": "17_164926162804546033",
+			"visible": false
+		}, {
+			"fromID": "16_164926162804546033",
+			"toID": "19_164926162804546033",
+			"visible": true
+		}, {
+			"fromID": "19_164926162804546033",
+			"toID": "15_164926162804546033",
+			"visible": true
+		}, {
+			"fromID": "3_164926129380455983",
+			"toID": "20_164926162804546033",
+			"visible": true
+		}, {
+			"fromID": "20_164926162804546033",
+			"toID": "16_164926162804546033",
+			"visible": true
+		}, {
+			"fromID": "15_164926162804546033",
+			"toID": "21_164926162804546033",
+			"visible": true
+		}, {
+			"fromID": "21_164926162804546033",
+			"toID": "2_164926129380455983",
+			"visible": true
+		}, {
+			"fromID": "20_164926162804546033",
+			"toID": "22_164926162804546033",
+			"visible": true
+		}, {
+			"fromID": "22_164926162804546033",
+			"toID": "21_164926162804546033",
+			"visible": true
+		}]
+	}
+}
+
+```
 
 ## xaif library
 
@@ -194,7 +575,7 @@ from xaif import AIF
 from xaif import AIF
 
 # Sample xAIF JSON 
-aif= {
+xaif_data= {
   "AIF": {
     "descriptorfulfillments": null,
     "edges": [
@@ -327,58 +708,1082 @@ aif= {
 }
 
 
+
 # Initialize the AIF object with xAIF data (AIF data structure provided as input)
+# Here, 'xaif_data' is expected to be a valid xAIF structure in JSON format
 aif = AIF(xaif_data)
 
-# Alternatively, initialize the AIF object with raw text data (you can use text directly instead of a full xAIF structure)
-# Here, "text_data" is a simple string representing the text you wish to analyze
-aif = AIF("here is the text.")
+# Alternatively, initialize the AIF object with raw text data.
+# The AIF object will automatically create locutions and other necessary components from the provided text.
+aif = AIF("First Sentence.")
 
-# Adding components to the AIF object: 
-# The add_component method takes the component type (e.g., "locution"), 
-# followed by component specific information like ID or associated data (e.g., text or related components).
+# Adding components to the AIF object:
 
+# 1. Adding a new locution (a statement made by a speaker)
+# 'component_type' is specified as "locution", and you provide the 'text' of the locution and the 'speaker' name.
+# The next available ID (1 in this case) will be automatically assigned to this locution.
+aif.add_component(component_type="locution", text="Second Sentence.", speaker="Default Speaker")
 
-# 1. Adding a locution component (a piece of spoken or written text associated with a participant)
-locution_text = "another text"
-first_speaker = "First Speaker"
-aif.add_component("locution", locution_text, first_speaker)
+# 2. Adding a proposition (a logical statement associated with a locution)
+# The 'component_type' is specified as "proposition", and you provide the locution ID (Lnode_ID) and the proposition text.
+# The associated locution ID (0) is required. 
+# This creates an I-node (proposition node) with the next available ID (2), and a YA (Default Illocuting) node with ID 3.
+aif.add_component(component_type="proposition", Lnode_ID=0, proposition="First sentence.")
 
-# 2. Adding another locution component for the second speaker
-second_speaker_text = "the third text. fourth text"
-second_speaker = "Second Speaker"
-aif.add_component("locution", second_speaker_text, second_speaker)
+# 3. Adding another proposition (another logical statement associated with another locution)
+# Here, the 'component_type' is again "proposition", and the associated locution ID (1) is required.
+# This creates an I-node with ID 4 and a YA-node with ID 5 to anchor the relation between the I-node and the associated locution.
+aif.add_component(component_type="proposition", Lnode_ID=1, proposition="Second sentence.")
 
-# 3. Adding segments: Argument units created by segmenting existing locutions into elementary discourse units.
-locution_id = 2
-segments = ["the third text.", "fourth text"]
-aif.add_component("segment", locution_id, segments)
+# 4. Adding an argument relation (representing the logical connection between propositions)
+# 'component_type' is specified as "argument_relation", and you provide the relation type (e.g., "RA" for default inference).
+# Here, you are creating an argument relation between two I-nodes (IDs 2 and 4), with the relation type "RA".
+# This creates an RA node and edges between the I-nodes and the RA-node.
+aif.add_component(component_type="argument_relation", relation_type="RA", iNode_ID2=2, iNode_ID1=4)
 
-# 4. Adding information nodes (proposition) for existing locution
-locution_id = 3
-proposition_text_1 = "the third text."
-aif.add_component("proposition", locution_id, proposition_text_1)
-
-# 5. Adding another proposition
-locution_id = 4
-proposition_text_2 = "fourth text."
-aif.add_component("proposition", locution_id, proposition_text_2)
-
-# 6. Adding an argument relation
-argument_relation_type = "RA"
-iNode_id_1 = 5
-iNode_id_2 = 7
-aif.add_component("argument_relation", argument_relation_type, iNode_id_1, iNode_id_2)
-
-# Print the generated xAIF data (the argumentation framework after the components are added)
-# "aif.xaif" contains the final xAIF representation of all the components added to the object
+# Print the generated xAIF structure to visualize the entire argumentation framework
 print(aif.xaif)
 
+# Exporting the data:
+# To export the argument relations in CSV format, use the get_csv method with "argument-relation" as the argument.
+print(aif.get_csv("argument-relation"))  # Exports proposition pairs with argument relations in tabular (CSV) format.
 
-# Generate a dataframe from the xAIF data. It returns pairs of components along with the relations between them.
-# It takes the type of relations needed as an argument.
+# To export the locution data in CSV format, use the get_csv method with "locution" as the argument.
+print(aif.get_csv("locution"))  # Exports locution data in tabular (CSV) format.
 
-print(aif.get_csv("argument-relation"))  # For generating argument relations in tabular format as a CSV file.
 
+
+```
+
+### An example with OVA, PropositionClassifier and Skeptic
+
+
+```json
+
+{
+  "AIF": {
+    "nodes": [
+      {
+        "nodeID": "2_166178046893607143",
+        "text": "Dungeons and Dragons and its imitators are right out of the pit of hell",
+        "type": "I"
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "text": "No Christian or sane, decent individual of whatever faith really should have anything to do with Dungeons and Dragons and its imitators",
+        "type": "I"
+      },
+      {
+        "nodeID": "5_166178046893607143",
+        "text": "Consequences",
+        "type": "RA"
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "text": "It's just a game!",
+        "type": "I"
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "text": "the person who thinks they can mess with Dungeons and Dragons without getting burnt is whistling in the dark",
+        "type": "I"
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "text": "people who think they can play around with crack or pre-marital sex and not get burned by death, AIDS or pregnancy are whistling in the dark",
+        "type": "I"
+      },
+      {
+        "nodeID": "10_166178046893607143",
+        "text": "Analogy",
+        "type": "RA"
+      },
+      {
+        "nodeID": "12_166178046893607143",
+        "text": "Default Conflict",
+        "type": "CA"
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "text": "Dungeons and Dragons is essentially a feeding program for occultism and witchcraft",
+        "type": "I"
+      },
+      {
+        "nodeID": "15_166178046893607143",
+        "text": "Verbal Classification",
+        "type": "RA"
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "text": "Dungeons and Dragons violates the commandment of I Ths. 5:22 \"Abstain from all appearance of evil.\"",
+        "type": "I"
+      },
+      {
+        "nodeID": "18_166178046893607143",
+        "text": "Sign",
+        "type": "RA"
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "text": "Much of the art, figurines, and writing within Dungeons and Dragons certainly appears evil to say the least of it",
+        "type": "I"
+      },
+      {
+        "nodeID": "21_166178046893607143",
+        "text": "Sign",
+        "type": "RA"
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "text": "the materials themselves contain magical rituals",
+        "type": "I"
+      },
+      {
+        "nodeID": "24_166178046893607143",
+        "text": "Sign",
+        "type": "RA"
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "text": "for the most part, the rituals are certainly authentic",
+        "type": "I"
+      },
+      {
+        "nodeID": "27_166178046893607143",
+        "text": "Expert Opinion",
+        "type": "RA"
+      },
+      {
+        "nodeID": "29_166178046893607143",
+        "text": "Default Conflict",
+        "type": "CA"
+      },
+      {
+        "nodeID": "31_166178046893607143",
+        "text": "Default Conflict",
+        "type": "CA"
+      },
+      {
+        "nodeID": "33_166178046893607143",
+        "text": "Default Conflict",
+        "type": "CA"
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "text": "If a person \"innocently\" works an authentic ritual that conjures up a demon, or curses someone, thinking that they are only playing a game, the ritual will still have efficacy",
+        "type": "I"
+      },
+      {
+        "nodeID": "36_166178046893607143",
+        "text": "Correlation To Cause",
+        "type": "RA"
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "text": "If you play at shooting your friend in the head with what you think is an unloaded pistol and don't know a shell is in the chamber, your friend is not any less dead because you were playing",
+        "type": "I"
+      },
+      {
+        "nodeID": "39_166178046893607143",
+        "text": "Analogy",
+        "type": "RA"
+      }
+    ],
+    "edges": [
+      {
+        "edgeID": 1,
+        "fromID": "2_166178046893607143",
+        "toID": "5_166178046893607143"
+      },
+      {
+        "edgeID": 2,
+        "fromID": "5_166178046893607143",
+        "toID": "3_166178046893607143"
+      },
+      {
+        "edgeID": 3,
+        "fromID": "8_166178046893607143",
+        "toID": "10_166178046893607143"
+      },
+      {
+        "edgeID": 4,
+        "fromID": "10_166178046893607143",
+        "toID": "7_166178046893607143"
+      },
+      {
+        "edgeID": 5,
+        "fromID": "7_166178046893607143",
+        "toID": "12_166178046893607143"
+      },
+      {
+        "edgeID": 6,
+        "fromID": "12_166178046893607143",
+        "toID": "6_166178046893607143"
+      },
+      {
+        "edgeID": 7,
+        "fromID": "13_166178046893607143",
+        "toID": "15_166178046893607143"
+      },
+      {
+        "edgeID": 8,
+        "fromID": "15_166178046893607143",
+        "toID": "2_166178046893607143"
+      },
+      {
+        "edgeID": 9,
+        "fromID": "16_166178046893607143",
+        "toID": "18_166178046893607143"
+      },
+      {
+        "edgeID": 10,
+        "fromID": "18_166178046893607143",
+        "toID": "13_166178046893607143"
+      },
+      {
+        "edgeID": 11,
+        "fromID": "19_166178046893607143",
+        "toID": "21_166178046893607143"
+      },
+      {
+        "edgeID": 12,
+        "fromID": "21_166178046893607143",
+        "toID": "16_166178046893607143"
+      },
+      {
+        "edgeID": 13,
+        "fromID": "22_166178046893607143",
+        "toID": "24_166178046893607143"
+      },
+      {
+        "edgeID": 14,
+        "fromID": "24_166178046893607143",
+        "toID": "13_166178046893607143"
+      },
+      {
+        "edgeID": 15,
+        "fromID": "25_166178046893607143",
+        "toID": "27_166178046893607143"
+      },
+      {
+        "edgeID": 16,
+        "fromID": "27_166178046893607143",
+        "toID": "22_166178046893607143"
+      },
+      {
+        "edgeID": 17,
+        "fromID": "6_166178046893607143",
+        "toID": "29_166178046893607143"
+      },
+      {
+        "edgeID": 18,
+        "fromID": "29_166178046893607143",
+        "toID": "3_166178046893607143"
+      },
+      {
+        "edgeID": 19,
+        "fromID": "6_166178046893607143",
+        "toID": "31_166178046893607143"
+      },
+      {
+        "edgeID": 20,
+        "fromID": "31_166178046893607143",
+        "toID": "2_166178046893607143"
+      },
+      {
+        "edgeID": 21,
+        "fromID": "6_166178046893607143",
+        "toID": "33_166178046893607143"
+      },
+      {
+        "edgeID": 22,
+        "fromID": "33_166178046893607143",
+        "toID": "13_166178046893607143"
+      },
+      {
+        "edgeID": 23,
+        "fromID": "34_166178046893607143",
+        "toID": "36_166178046893607143"
+      },
+      {
+        "edgeID": 24,
+        "fromID": "36_166178046893607143",
+        "toID": "25_166178046893607143"
+      },
+      {
+        "edgeID": 25,
+        "fromID": "37_166178046893607143",
+        "toID": "39_166178046893607143"
+      },
+      {
+        "edgeID": 26,
+        "fromID": "39_166178046893607143",
+        "toID": "34_166178046893607143"
+      }
+    ],
+    "schemefulfillments": [
+      {
+        "nodeID": "2_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "5_166178046893607143",
+        "schemeID": "237"
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "10_166178046893607143",
+        "schemeID": "1"
+      },
+      {
+        "nodeID": "12_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "15_166178046893607143",
+        "schemeID": "31"
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "18_166178046893607143",
+        "schemeID": "30"
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "21_166178046893607143",
+        "schemeID": "30"
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "24_166178046893607143",
+        "schemeID": "30"
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "27_166178046893607143",
+        "schemeID": "15"
+      },
+      {
+        "nodeID": "29_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "31_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "33_166178046893607143",
+        "schemeID": "71"
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "36_166178046893607143",
+        "schemeID": "7"
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "schemeID": "0"
+      },
+      {
+        "nodeID": "39_166178046893607143",
+        "schemeID": "1"
+      }
+    ],
+    "participants": [
+      {
+        "participantID": 1,
+        "firstname": "Participant",
+        "surname": "Rachel"
+      },
+      {
+        "participantID": 2,
+        "firstname": "Participant",
+        "surname": "Carolyn"
+      },
+      {
+        "participantID": 3,
+        "firstname": "Participant",
+        "surname": "Mo"
+      },
+      {
+        "participantID": 4,
+        "firstname": "Participant",
+        "surname": "Zoe"
+      },
+      {
+        "participantID": 5,
+        "firstname": "Participant",
+        "surname": "Claire"
+      },
+      {
+        "participantID": 6,
+        "firstname": "Participant",
+        "surname": "Lee"
+      },
+      {
+        "participantID": 7,
+        "firstname": "Participant",
+        "surname": "Sally"
+      },
+      {
+        "participantID": 8,
+        "firstname": "Participant",
+        "surname": "Kalbir"
+      },
+      {
+        "participantID": 9,
+        "firstname": "Participant",
+        "surname": "Alice"
+      },
+      {
+        "participantID": 10,
+        "firstname": "Anne",
+        "surname": "Robinson"
+      },
+      {
+        "participantID": 11,
+        "firstname": "Diane",
+        "surname": "Munday"
+      },
+      {
+        "participantID": 12,
+        "firstname": "Neena",
+        "surname": "Modi"
+      },
+      {
+        "participantID": 13,
+        "firstname": "David",
+        "surname": "Steel"
+      },
+      {
+        "participantID": 14,
+        "firstname": "Neil",
+        "surname": "Lyndon"
+      }
+    ],
+    "locutions": [],
+    "descriptorfulfillments": [],
+    "cqdescriptorfulfillments": []
+  },
+  "text": "Dungeons and Dragons is essentially a feeding program for occultism and witchcraft. For Christians, the first scriptural problem is the fact that Dungeons and Dragons violates the commandment of I Ths. 5:22 \"Abstain from all appearance of evil.\" Much of the art, figurines, and writing within Dungeons and Dragons certainly appears evil to say the least of it.
+
+On top of that, the second issue is that the materials themselves contain magical rituals. From my own experience as a witch high priest (Alexandrian tradition) during the period 1973-84, I can tell you that, for the most part, the rituals are certainly authentic.
+
+If a person \"innocently\" works an authentic ritual that conjures up a demon, or curses someone, thinking that they are only playing a game, the ritual will still have efficacy. If you play at shooting your friend in the head with what you think is an unloaded pistol and don't know a shell is in the chamber, is your friend any less dead because you were playing? 
+
+Of course, some people will say: \"It's just a game!\" But like the people who think they can play around with crack or pre-marital sex and not get burned by death, AIDS or pregnancy, the person who thinks they can mess with Dungeons and Dragons without getting burnt is whistling in the dark.
+
+Thus, in my mind, there is no doubt that Dungeons and Dragons and its imitators are right out of the pit of hell. No Christian or sane, decent individual of whatever faith really should have anything to do with them.
+",
+  "OVA": {
+    "firstname": "Jacky",
+    "surname": "Visser",
+    "url": "",
+    "nodes": [
+      {
+        "nodeID": "2_166178046893607143",
+        "visible": true,
+        "x": 192,
+        "y": 175,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "visible": true,
+        "x": 190,
+        "y": 7,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "5_166178046893607143",
+        "visible": true,
+        "x": 235,
+        "y": 132,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "visible": true,
+        "x": 614,
+        "y": 200,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "visible": true,
+        "x": 581,
+        "y": 311,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "visible": true,
+        "x": 582,
+        "y": 479,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "10_166178046893607143",
+        "visible": true,
+        "x": 638,
+        "y": 422,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "12_166178046893607143",
+        "visible": true,
+        "x": 617,
+        "y": 257,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "visible": true,
+        "x": 192,
+        "y": 311,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "15_166178046893607143",
+        "visible": true,
+        "x": 234,
+        "y": 264,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "visible": true,
+        "x": 84,
+        "y": 465,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "18_166178046893607143",
+        "visible": true,
+        "x": 210,
+        "y": 404,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "visible": true,
+        "x": 84,
+        "y": 616,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "21_166178046893607143",
+        "visible": true,
+        "x": 161,
+        "y": 569,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "visible": true,
+        "x": 321,
+        "y": 464,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "24_166178046893607143",
+        "visible": true,
+        "x": 332,
+        "y": 402,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "visible": true,
+        "x": 325,
+        "y": 579,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "27_166178046893607143",
+        "visible": true,
+        "x": 367,
+        "y": 532,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "29_166178046893607143",
+        "visible": true,
+        "x": 425,
+        "y": 52,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "31_166178046893607143",
+        "visible": true,
+        "x": 423,
+        "y": 195,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "33_166178046893607143",
+        "visible": true,
+        "x": 421,
+        "y": 321,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "visible": true,
+        "x": 327,
+        "y": 694,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "36_166178046893607143",
+        "visible": true,
+        "x": 363,
+        "y": 647,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "visible": true,
+        "x": 327,
+        "y": 866,
+        "timestamp": ""
+      },
+      {
+        "nodeID": "39_166178046893607143",
+        "visible": true,
+        "x": 392,
+        "y": 820,
+        "timestamp": ""
+      }
+    ],
+    "edges": [
+      {
+        "fromID": "2_166178046893607143",
+        "toID": "5_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "5_166178046893607143",
+        "toID": "3_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "8_166178046893607143",
+        "toID": "10_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "10_166178046893607143",
+        "toID": "7_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "7_166178046893607143",
+        "toID": "12_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "12_166178046893607143",
+        "toID": "6_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "13_166178046893607143",
+        "toID": "15_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "15_166178046893607143",
+        "toID": "2_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "16_166178046893607143",
+        "toID": "18_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "18_166178046893607143",
+        "toID": "13_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "19_166178046893607143",
+        "toID": "21_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "21_166178046893607143",
+        "toID": "16_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "22_166178046893607143",
+        "toID": "24_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "24_166178046893607143",
+        "toID": "13_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "25_166178046893607143",
+        "toID": "27_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "27_166178046893607143",
+        "toID": "22_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "6_166178046893607143",
+        "toID": "29_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "29_166178046893607143",
+        "toID": "3_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "6_166178046893607143",
+        "toID": "31_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "31_166178046893607143",
+        "toID": "2_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "6_166178046893607143",
+        "toID": "33_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "33_166178046893607143",
+        "toID": "13_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "34_166178046893607143",
+        "toID": "36_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "36_166178046893607143",
+        "toID": "25_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "37_166178046893607143",
+        "toID": "39_166178046893607143",
+        "visible": true
+      },
+      {
+        "fromID": "39_166178046893607143",
+        "toID": "34_166178046893607143",
+        "visible": true
+      }
+    ]
+  },
+  "propositionClassifier": {
+    "nodes": [
+      {
+        "nodeID": "2_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "3_166178046893607143",
+        "propType": "policy"
+      },
+      {
+        "nodeID": "6_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "7_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "8_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "13_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "16_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "19_166178046893607143",
+        "propType": "value"
+      },
+      {
+        "nodeID": "22_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "25_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "34_166178046893607143",
+        "propType": "fact"
+      },
+      {
+        "nodeID": "37_166178046893607143",
+        "propType": "fact"
+      }
+    ]
+  },
+  "Skeptic": {
+    "questions": [
+      {
+        "rank": 1,
+        "nodeID": "3_166178046893607143",
+        "question": "Is this statement consistent with previous proposals?"
+      },
+      {
+        "rank": 2,
+        "nodeID": "3_166178046893607143",
+        "question": "Is this policy appropriate for this objective?"
+      },
+      {
+        "rank": 3,
+        "nodeID": "5_166178046893607143",
+        "question": "How strong is the probability or plausibility that these cited consequences will (may, might, must) occur?"
+      },
+      {
+        "rank": 4,
+        "nodeID": "5_166178046893607143",
+        "question": "What evidence, if any, supported the claim that these consequences will (may, might, must) occur if the action is brought about?"
+      },
+      {
+        "rank": 5,
+        "nodeID": "5_166178046893607143",
+        "question": "Are there consequences of the opposite value that ought to be taken into account?"
+      },
+      {
+        "rank": 6,
+        "nodeID": "2_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 7,
+        "nodeID": "15_166178046893607143",
+        "question": "What evidence is there that this thing definitely has the property, as opposed to evidence indicating room for doubt on whether it should be so classified?"
+      },
+      {
+        "rank": 8,
+        "nodeID": "15_166178046893607143",
+        "question": "Is the verbal classification in the classification premise based merely on a stipulative or biased definition that is subject to doubt?"
+      },
+      {
+        "rank": 9,
+        "nodeID": "13_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 10,
+        "nodeID": "18_166178046893607143",
+        "question": "What is the strength of the correlation of the sign with the event signified?"
+      },
+      {
+        "rank": 11,
+        "nodeID": "18_166178046893607143",
+        "question": "Are there other events that would more reliably account for the sign?"
+      },
+      {
+        "rank": 12,
+        "nodeID": "24_166178046893607143",
+        "question": "What is the strength of the correlation of the sign with the event signified?"
+      },
+      {
+        "rank": 13,
+        "nodeID": "24_166178046893607143",
+        "question": "Are there other events that would more reliably account for the sign?"
+      },
+      {
+        "rank": 14,
+        "nodeID": "22_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 15,
+        "nodeID": "27_166178046893607143",
+        "question": "How credible is the source as an expert?"
+      },
+      {
+        "rank": 16,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the source an expert in a relevant field?"
+      },
+      {
+        "rank": 17,
+        "nodeID": "27_166178046893607143",
+        "question": "What did the source assert that implies this claim?"
+      },
+      {
+        "rank": 18,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the source personally reliable?"
+      },
+      {
+        "rank": 19,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the claim consistent with what other experts assert?"
+      },
+      {
+        "rank": 20,
+        "nodeID": "27_166178046893607143",
+        "question": "Is the source’s assertion based on evidence?"
+      },
+      {
+        "rank": 21,
+        "nodeID": "6_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 22,
+        "nodeID": "6_166178046893607143",
+        "question": "Could there be any reasons for accepting this proposition?"
+      },
+      {
+        "rank": 23,
+        "nodeID": "6_166178046893607143",
+        "question": "Is there any argument in support of this claim?"
+      },
+      {
+        "rank": 24,
+        "nodeID": "25_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 25,
+        "nodeID": "36_166178046893607143",
+        "question": "Is there really a correlation between the two states of affairs?"
+      },
+      {
+        "rank": 26,
+        "nodeID": "36_166178046893607143",
+        "question": "Is there any reason to think that the correlation is any more than a coincidence?"
+      },
+      {
+        "rank": 27,
+        "nodeID": "36_166178046893607143",
+        "question": "Could there be some third factor that is causing both states of affairs?"
+      },
+      {
+        "rank": 28,
+        "nodeID": "7_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 29,
+        "nodeID": "10_166178046893607143",
+        "question": "Are there differences between the compared cases that would tend to undermine the force of the similarity cited?"
+      },
+      {
+        "rank": 30,
+        "nodeID": "10_166178046893607143",
+        "question": "Is the property true or false in the first compared case?"
+      },
+      {
+        "rank": 31,
+        "nodeID": "10_166178046893607143",
+        "question": "Is there some other comparable case that is also similar to the first case, but in which the property is not true (false)?"
+      },
+      {
+        "rank": 32,
+        "nodeID": "16_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 33,
+        "nodeID": "21_166178046893607143",
+        "question": "What is the strength of the correlation of the sign with the event signified?"
+      },
+      {
+        "rank": 34,
+        "nodeID": "21_166178046893607143",
+        "question": "Are there other events that would more reliably account for the sign?"
+      },
+      {
+        "rank": 35,
+        "nodeID": "34_166178046893607143",
+        "question": "Is this statement actually true?"
+      },
+      {
+        "rank": 36,
+        "nodeID": "39_166178046893607143",
+        "question": "Are there differences between the compared cases that would tend to undermine the force of the similarity cited?"
+      },
+      {
+        "rank": 37,
+        "nodeID": "39_166178046893607143",
+        "question": "Is the property true or false in the first compared case?"
+      },
+      {
+        "rank": 38,
+        "nodeID": "39_166178046893607143",
+        "question": "Is there some other comparable case that is also similar to the first case, but in which the property is not true (false)?"
+      },
+      {
+        "rank": 39,
+        "nodeID": "8_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 40,
+        "nodeID": "19_166178046893607143",
+        "question": "Does this statement reflect a popularly held value?"
+      },
+      {
+        "rank": 41,
+        "nodeID": "37_166178046893607143",
+        "question": "Is this statement actually true?"
+      }
+    ]
+  }
+}
 
 ```

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="xaif",
-    version="0.3.4",
+    version="0.3.5",
     author="DEBELA",
     author_email="dabookoo@gmail.com",
     description="xaif package",
