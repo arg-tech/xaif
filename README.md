@@ -58,6 +58,8 @@ from xaif import AIF
 
 ### Example
 
+A basic example usage.
+
 ```python
 from xaif import AIF
 
@@ -195,10 +197,7 @@ aif= {
 }
 
 
-# Initialize the AIF object with xAIF data (AIF data structure provided as input)
-aif = AIF(xaif_data)
 
-# Example: Working with xAIF in the AIF Class
 
 # Initialize the AIF object with xAIF data (AIF data structure provided as input)
 # Here, 'xaif_data' is expected to be a valid xAIF structure in JSON format
@@ -248,7 +247,12 @@ print(aif.get_csv("locution"))  # Exports locution data in tabular (CSV) format.
 
 ## Documentation
 
-The full documentation is available at [xaif_eval Documentation](https://github.com/arg-tech/xaif/blob/main/docs/).
+The full documentation is available at [xaif_eval Documentation](https://github.com/arg-tech/xaif/blob/main/docs/tutorial.md).
+
+
+## Jupyter Example 
+
+A step-by-step example available at [Jupyter Example ](https://github.com/arg-tech/xaif/blob/main/docs/xaif_example.ipynb).
 
 ## Contributing
 

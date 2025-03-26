@@ -16,7 +16,7 @@
 
 ## Overview
 
-xAIF (Extended Argumentation Interchange Format) is an extension of the AIF (Argumentation Interchange Format) [AIF Specification](https://www.arg-tech.org/wp-content/uploads/2011/09/aif-spec.pdf), designed to handle more flexible and dynamic argument structures in environments of incremental processing. AIF imposes certain constraints, such as requiring relations to have exactly one consequent and at least one antecedent, and limiting interconnections between propositions to relations. While these constraints are valuable in a fully formed argument structure, they can be too restrictive for environments where arguments are being built piecemeal or where intermediate annotations are needed. This is where xAIF comes in. It extends the AIF to allow for both **underspecified** and **overspecified** argumentation structures, making it a more versatile tool for argumentation representation.
+xAIF (Extended Argumentation Interchange Format) is an extension of the AIF (Argumentation Interchange Format) (see [AIF Specification](https://www.arg-tech.org/wp-content/uploads/2011/09/aif-spec.pdf)), designed to handle more flexible and dynamic argument structures in environments of incremental processing. AIF imposes certain constraints, such as requiring relations to have exactly one consequent and at least one antecedent, and limiting interconnections between propositions to relations. While these constraints are valuable in a fully formed argument structure, they can be too restrictive for environments where arguments are being built piecemeal or where intermediate annotations are needed. This is where xAIF comes in. It extends the AIF to allow for both **underspecified** and **overspecified** argumentation structures, making it a more versatile tool for argumentation representation.
 
 ### Features of xAIF:
 1. **Underspecification**: Some constraints present in basic AIF (such as the number of antecedents or consequents in a relation) are relaxed, allowing for incomplete or evolving argumentation structures.
@@ -30,12 +30,14 @@ xAIF is represented as a JSON object that contains several key sections. Below i
 
 ### Main Components:
 1. **AIF**: Contains the main argumentation structure, which includes descriptors, edges, locutions, nodes, participants, and scheme fulfillments.
-   - **descriptorfulfillments**: Can be used to track how descriptors are fulfilled in the argumentation structure. In basic xAIF, this may be left as `null`.
-   - **edges**: Defines the relationships between nodes (propositions or claims), where each edge connects two nodes. Edges are defined with a unique `edgeID` and `fromID` / `toID` indicating the direction of the relation.
-   - **locutions**: The utterances associated with participants (e.g., statements or claims made by speakers). Each locution is tied to a node and a participant.
-   - **nodes**: Represents individual propositions, claims, or other argumentation elements. Each node is identified by a unique `nodeID`, has associated text (`text`), and a type (`type`), which can specify whether the node is a **Locution (L)**, **Illocution (I)**, **Inference (RA)**, or **Argumentation (YA)**.
+
+   - **Nodes**: Represent individual propositions or other argumentation elements within an argument graph. Each node has a unique `nodeID`, associated text (`text`), and a `type`. The xAIF framework distinguishes between **information nodes (I-nodes)**, which represent propositions and sentences, and **scheme nodes (S-nodes)**, which capture reasoning patterns. Scheme nodes include **rule application nodes (RA-nodes)** for inference relations, **conflict application nodes (CA-nodes)** for conflict relations, and **preference application nodes (PA-nodes)** for preference relations. 
+
+   - **edges**: Defines the relationships between nodes, where each edge connects two nodes. Edges are defined with a unique `edgeID` and `fromID` / `toID` indicating the direction of the relation.
    - **participants**: Information about the speakers or contributors to the discourse, identified by a unique `participantID`.
+   - **descriptorfulfillments**: Can be used to track how descriptors are fulfilled in the argumentation structure. In basic xAIF, this may be left as `null`.
    - **schemefulfillments**: Similar to descriptorfulfillments, but focused on tracking specific argumentation schemes. This can also be `null` in basic implementations.
+   - **locutions**: The utterances associated with participants (e.g., statements or claims made by speakers). Each locution is tied to a node and a participant.
 
 2. **dialog**: A boolean flag indicating whether the text is part of a dialogue. If set to `true`, the text represents an exchange between two or more participants.
 3. **ova**: An array for additional annotations or visualizations that may be required by specific applications.
