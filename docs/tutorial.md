@@ -16,7 +16,146 @@
 
 ## Overview
 
-xAIF (Extended Argumentation Interchange Format) is an extension of the AIF (Argumentation Interchange Format) (see [AIF Specification](https://www.arg-tech.org/wp-content/uploads/2011/09/aif-spec.pdf)), designed to handle more flexible and dynamic argument structures in environments of incremental processing. AIF imposes certain constraints, such as requiring relations to have exactly one consequent and at least one antecedent, and limiting interconnections between propositions to relations. While these constraints are valuable in a fully formed argument structure, they can be too restrictive for environments where arguments are being built piecemeal or where intermediate annotations are needed. This is where xAIF comes in. It extends the AIF to allow for both **underspecified** and **overspecified** argumentation structures, making it a more versatile tool for argumentation representation.
+xAIF (Extended Argumentation Interchange Format) is an extension of the AIF (Argumentation Interchange Format).
+ (see [AIF Specification](https://www.arg-tech.org/wp-content/uploads/2011/09/aif-spec.pdf)). In this section, the overview of the xAIF format is presented with its relation to the Inference Anchoring Theory (IAT). This format is aimed to standardize the way of interchanging data between tools for argument
+manipulation and visualisation.  Detailed explanations IAT can be found in the following papers:
+```text
+Katarzyna Budzynska, Mathilde Janier, Chris Reed, and Patrick Saint Dizier. Theoretical foundations for illocutionary structure parsing. Argument & Computation, 7(1):91–108, 2016.
+
+Mathilde Janier, Mark Snaith, Katarzyna Budzynska, John Lawrence, and Chris Reed. A sys- tem for dispute mediation: The mediation dialogue game. In The 6th International Conference on Computational Models of Argument, pages 351–358. IOS Press, 2016.
+```
+A text (conversation, discussion, article, etc.) in AIT is considered to be a set of separate spans that are called argumentative discourse units (ADUs).
+ADUs are related between each other, creating a directed graph of the argument, which is encoded in the xAIF. 
+ADUs are like atoms in this theory: the smallest units to work with.
+ 
+xAIF is designed to handle more flexible and dynamic argument structures in environments of incremental processing. AIF imposes certain constraints, such as requiring relations to have exactly one consequent and at least one antecedent, and limiting interconnections between propositions to relations. While these constraints are valuable in a fully formed argument structure, they can be too restrictive for environments where arguments are being built piecemeal or where intermediate annotations are needed. This is where xAIF comes in. It extends the AIF to allow for both **underspecified** and **overspecified** argumentation structures, making it a more versatile tool for argumentation representation.
+
+#### What is Argumentative Discourse Unit (ADU)
+
+ADU is a text span which has a propositional content anchored (attached/grouped to) in either the locution (text phrase) itself or a
+transition (connection) targeting this locution; and has discrete argumentative function,
+in that the propositional content stands in
+relation to one or more other propositions via one or more instances of inference, conflict or rephrase.
+
+Less formally, lets look at the example:
+```text
+
+Bob: Please, be careful with the table.
+
+Worker: Why ?  
+
+Bob: It has a glass element, so it could brake.
+```
+
+The ADUs here are:
+```python
+[
+ "Bob: Please, be careful with the table.",
+ "Worker: Why ?",
+ "Bob: It has a glass element,",
+ "Bob: so it could brake."
+]
+```
+
+Each of the text of ADU contains information of the speaker, as well as the information that may lead to some instance. 
+For example, the sentence <i>'It has a glass elements, so it could brake.'</i> is split into 2 ADUs, as it contains 2 different spans that are connected:
+
+<br>
+
+'It has a glass element' -> 'so it could brake'. Note, that is not necessary a sentence, but rather a text chunk.
+
+<br>
+
+There are different possible relations that could be formed between ADUs. These relations are called 
+<i>Discrete Argumentative Function</i>. The full list and their description can be found [here](docs_add_info%2FIAT_guidelines_and_tutorials-2023-10.pdf), Section 1.1.
+
+
+#### Types of ADUs
+For a content spans, ADUs are separated into two types: I-nodes (information nodes) and L-nodes (locution nodes). 
+The best way to explain the difference is via the example (see image below).
+
+![Alt text](docs_imgs/docs-ait.png)
+
+The L-node has an unprocessed text ''as-is'' from the speaker, when the I-node has its processed version with the context 
+and contains only required ''neutral'' semantics.
+The reason for a separation like this is to make an analysis of the content easier and to minimize the effects of style, lack of context (e.g. prepositions), etc.
+L-nodes and I-nodes have a one-to-one mapping between each other and represent an information of the argument with the help of a transition node. 
+The example will be presented in the next section. Additionally, such separation is required in order to compare examine the style, 
+the rhetoric component of the text etc. separately and with the connection to what was actually ment.
+
+
+#### Transitions
+A transition captures a response or a reply and embodies a functional relationship between predecessor locution and successor locution. 
+Less formally, it is a directed edge between different ADUs in a graph, but with a twist: not only the edge is created, but an additional 
+node in between.
+The reason for this complex structure is that ADUs can have a relation not only to other ADUs, but to the connections itself. For example, 
+ADU can attack the transition between two possible text spans, but not the content itself. Also, they could indicate grouping of different nodes and/or pairs of nodes
+into one argument with the described structure.
+Moreover, they can indicate the connection between I- and L-nodes, type of such connection and so on. Looks a bit complicated - but no worries, 
+it will be easier with the image example. It comes soon! :)
+
+<br>
+
+Transition nodes are called <i>TA</i> nodes and may include Asserting, Questioning, Conflict and so on. Note that they do not necessary a 
+binary relations: they could have multiple ancestors/children nodes.
+
+<br>
+
+For example, consider a TA between the L- and I-nodes in the image below.
+
+![Alt text](docs_imgs%2Fdocs-ait-l2i.png)
+
+The transition here is between L-node to I-node that indicate, that the speaker in the L-node asserted the statement that is reflected in 
+the corresponding I-node.
+
+#### Propositions and their relations
+Propositions are the text chunks that consist of the contents of individual locutions. 
+Proposition is always a sentence with a resolved pronouns.
+
+<br>
+
+Relations between propositional contents are about a speaker’s intended use of linguistic material. These relations occur 
+only between the I-nodes (the ones that reflect the processed content only). 
+
+<br>
+
+We distinguish three types of propositional relations:
+* Inference (RA nodes) (e.g. Inference, Support); 
+* Conflict (CA nodes) (e.g. Attack)
+* Rephrase (MA nodes) (e.g. Paraphrase)
+
+These connections are inserted into the graph "in between" the edge. They indicate the relationships between the content 
+pieces - how the argument is evolving, how people builds the argument, whether the previous I-node was attacked by another argument and so on.
+
+#### Illocutionary Connections
+
+The final piece of the puzzle are YA-nodes. YA-nodes are the nodes that are constructed "in between" the TA-nodes and propositional relations
+(RA, CA, MA). They are used to bound (or anchor) together pairs of arguments/text chunks/content pieces in a specific relation. 
+They give a clear indication on which content pieces are grouped into the same argument.
+
+<br>
+
+<b>Lets wrap everything we discussed so far!</b> On the image below an example of a part of a graph is presented.
+
+![Alt text](docs_imgs%2Fdocs-ait-trans-props.png)
+
+Let's break it down bit by bit: 
+
+1. The text is gathered from the speakers.
+2. The text is split into L-nodes with the clear indication of the speaker and the content. 
+3. I-nodes are retrieved from L-nodes: processing them by referencing the pronouns, 'neutralizing' the style, obtaining the semantics.
+4. TA nodes are drawn indicating the flow of the argument (not time-manner, but connectivity of text pieces responding to other text pieces)
+5. Propositional relationships are build (RA node on the example) creating the clear understanding of the specific type of the connection between the locutions.
+6. YA-nodes are added to group together pairs (or maybe more) nodes into the argument.
+
+In short, that is it! 
+
+<br>
+
+Now the xAIF representation of this theoretical framework will be presented.
+
+
+
 
 ### Features of xAIF:
 1. **Underspecification**: Some constraints present in basic AIF (such as the number of antecedents or consequents in a relation) are relaxed, allowing for incomplete or evolving argumentation structures.
@@ -25,23 +164,228 @@ xAIF (Extended Argumentation Interchange Format) is an extension of the AIF (Arg
 4. **Interlingua for Argument Mining**: xAIF serves as the interlingua for the open argument mining framework, facilitating both input and output for all its modules.
 
 ## Structure of xAIF
-
 xAIF is represented as a JSON object that contains several key sections. Below is a breakdown of the structure, followed by an example of a sample xAIF representation.
 
-### Main Components:
-1. **AIF**: Contains the main argumentation structure, which includes descriptors, edges, locutions, nodes, participants, and scheme fulfillments.
+The xAIF format is a json file that has the following structure:
 
-   - **Nodes**: Represent individual propositions or other argumentation elements within an argument graph. Each node has a unique `nodeID`, associated text (`text`), and a `type`. The xAIF framework distinguishes between **information nodes (I-nodes)**, which represent propositions and sentences, and **scheme nodes (S-nodes)**, which capture reasoning patterns. Scheme nodes include **rule application nodes (RA-nodes)** for inference relations, **conflict application nodes (CA-nodes)** for conflict relations, and **preference application nodes (PA-nodes)** for preference relations. 
+```python
+empty_xaif_example = {
+    "AIF": {
+        "nodes": [],
+        "edges": [],
+        "locutions": [],
+        "participants": []
+    },
+    "<ADDITIONAL_FIELD>": []
+}
+```
 
-   - **edges**: Defines the relationships between nodes, where each edge connects two nodes. Edges are defined with a unique `edgeID` and `fromID` / `toID` indicating the direction of the relation.
-   - **participants**: Information about the speakers or contributors to the discourse, identified by a unique `participantID`.
-   - **descriptorfulfillments**: Can be used to track how descriptors are fulfilled in the argumentation structure. In basic xAIF, this may be left as `null`.
-   - **schemefulfillments**: Similar to descriptorfulfillments, but focused on tracking specific argumentation schemes. This can also be `null` in basic implementations.
-   - **locutions**: The utterances associated with participants (e.g., statements or claims made by speakers). Each locution is tied to a node and a participant.
+THe <i>AIF</i> key contains the argument graph (as was described before). For example, let's go back to the image
+that was presented:
+![Alt text](docs_imgs%2Fdocs-ait-trans-props.png)
 
-2. **dialog**: A boolean flag indicating whether the text is part of a dialogue. If set to `true`, the text represents an exchange between two or more participants.
-3. **ova**: An array for additional annotations or visualizations that may be required by specific applications.
-4. **text**: Contains the raw textual dialogue, with each speaker's contribution marked by their corresponding span IDs, allowing for easy visualization and interaction.
+The AIF representation of this graph would include the following:
+
+###### nodes
+
+Each node of the graph (I-node, L-node, RA,CA,MA,TA,YA nodes) will be presented as dictionaries of the following format:
+```python
+{
+    "nodeID": "<NODE ID>",
+    "type": "<NODE TYPE, E.G. - I>",
+    "text": "<NODE TEXT>",
+    "timestamp": "OPTIONAL"
+}
+```
+
+The keys are:
+
++ <i>nodeID</i>: str, usually an integer ("1", "2" etc.). Unique identifier of the node.
++ <i>type</i>: str, the node type: "L", "I", "CA", "TA", "YA", "RA", "MA".
++ <i>text</i>: str, text related to the node. For L-nodes usually follows a pattern of "<SPEAKER NAME>:<TEXT SPAN>"; 
+for I-nodes "<PROCESSED TEXT SPAN>"; for other nodes its type of relations (e.g. "Default Transition", "Default Conflict", "Asserting" and so on).
++ <i>timestamp</i>: str, optional, might not be in every node. Timestamp of the node. Depending on the data, could be different. In this case, it is a time, when the text was said without accounting on the processing time.
+
+For example:
+
+```python
+l_node_example = {
+    "nodeID": "88",
+    "text": "Sergiy Zhadan: I imagine it’s scary for birds to fly over the river",
+    "type": "L",
+    "timestamp": "2077-01-01 12:12:30"
+}
+
+i_node_example = {
+    "nodeID": "12",
+    "text": "Sergiy imagines that flying over the river is scary for birds",
+    "type": "I",
+    "timestamp": "2077-01-01 12:12:30"
+}
+
+ra_node_example = {
+    "nodeID": "1",
+    "text": "Inference",
+    "type": "RA"
+}
+```
+###### edges
+
+Each edge is presented as a json: 
+
+```python
+edge_dict_example = {
+    "edgeID": "<EDGE ID STR>",
+    "fromID": "<nodID from nodes>",
+    "toID": "<nodID from nodes>",
+}
+```
+
+The keys are:
+
++ <i>edgeID</i>: str, usually an integer ("1", "2" etc.). Unique identifier of the edge.
++ <i>fromID</i>: str, nodeID that corresponds to one of the nodes in AIF["nodes"], FROM which the edge is going.
++ <i>toID</i>: str, nodeID that corresponds to one of the nodes in AIF["nodes"], TO which the edge is going.
+
+For example:
+
+```python
+edge_example = {
+    "fromID": "2",
+    "toID": "10",
+    "edgeID": "123443"
+}
+```
+
+In the example, the edge json indicates that there is an edge from the node with id "2" to the node with id "10".
+The info about these nodes can be found in AIF["nodes"], in the dictionaries with the corresponding "nodeID" value.
+
+###### participants
+Participant dict contains information about the speakers. The format is as follows:
+
+```python
+participant_example ={
+    "participantID": "12",
+    "firstname": "Sergiy",
+    "surname": "Zhadan"
+}
+```
+
+The keys are:
+
++ <i>participantID</i>: str, unique identifier of the person.
++ <i>firstname</i>: str, first name of the person if known. Otherwise "".
++ <i>surname</i>: str, last name of the person if known. Otherwise "".
+
+###### locutions
+The locutions are metadata about the speakers (mapping of unique speaker to the node content) of the nodes. The format is as follows:
+
+```python
+locution_example = {
+      "nodeID": "1265674", 
+      "personID": "0", 
+      "timestamp": "2023-10-11 15:34:32"
+    }
+```
+
+The keys are:
+
++ <i>nodeID</i>: str, nodeID that corresponds to one of the nodes in AIF["nodes"].
++ <i>personID</i>: str, unique speaker identifier that is mapped to the AIF["participants"].
++ <i>timestamp</i>: str, optional, might not be in every node. Timestamp of the node. Depending on the data, could be different. In this case, it is a time, when the text was said without accounting on the processing time.
+
+#### Additional fields of xAIF
+With parsing relevant information of the argument, the parsed chunks are stored in its separate keys. By default, 
+we have the following additional fields in xAIF:
+
+```python
+empty_xaif_example = {
+    "AIF": {
+        "nodes": [],
+        "edges": [],
+        "locutions": [],
+        "participants": []
+    },
+    "actors": {"nodes": [], "participants": []},
+    "assumptions": {"nodes": []}, 
+    "decisive_conditions": {"nodes": []}, 
+    "events": {"nodes": []}, 
+    "evidences": {"nodes": []},
+    "propositionTypes": {"nodes": []}, 
+    "locations": {"nodes": []}, 
+    "observations": {"nodes": []}, 
+    "risksOpportunities": {"nodes": []}, 
+    "hypotheses": {"nodes": []},
+    "meansObjectives": {"nodes": []}
+    
+}
+```
+
+Each of them has an individual structure, depending on the requirements.
+
+###### actors
+For the actors, the xAIF["actors"] contains I-nodes and mentions of people, as well participants aggregated data. In this case, actor is a person or organization that 
+appeared in the node text.
+For example:
+
+```python
+xAIF["actors"] = {
+    "nodes": [
+        {
+            "nodeID": "1",
+            "mentions": [
+                {
+                    "start": 0,
+                    "end": 10,
+                    "uri": "http://person_uri"
+                },
+                {
+                    "start": 100,
+                    "end": 120,
+                    "uri": "http://person_1_uri"
+                }
+            ]
+        }
+    ],
+      "participants": [
+          {
+              "personID": "http://person_uri",
+              "uri": "http://person_uri"
+          },
+          {
+              "personID": "http://person_1_uri",
+              "uri": "http://person_1_uri"
+          }
+      ]
+}
+```
+
+The xAIF["actors"] is a dict that contains 2 keys: nodes and participants.
+<p>
+<i>nodes</i> value is a list of dicts of the format:
+
+```python
+{
+    "nodeID": "",
+    "mentions": []
+}
+```
+
+'nodeID' is a string value that corresponds to the node in xAIF["AIF"]["nodes"], where the actors were detected.
+Actual actors are stored in 'mentions' key. The 'mentions' value is a list of dicts of the format:
+
+```python
+{
+    "start": 0,
+    "end": 10,
+    "uri": "http://person_uri"
+}
+```
+
+'start' and 'end' are ints. They indicate start symbol and end symbol (not inclusive) of the actor in the text of the node, where the actor was found.
+'uri' is a unique identifier in some database of the actor that was found.
+</p>
+
 
 ### Example xAIF JSON
 
