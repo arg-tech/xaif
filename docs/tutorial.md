@@ -74,7 +74,7 @@ There are different possible relations that could be formed between ADUs. These 
 For a content spans, ADUs are separated into two types: I-nodes (information nodes) and L-nodes (locution nodes). 
 The best way to explain the difference is via the example (see image below).
 
-![Alt text](docs_imgs/docs-ait.png)
+![Alt text](../docs_imgs/docs-ait.png)
 
 The L-node has an unprocessed text ''as-is'' from the speaker, when the I-node has its processed version with the context 
 and contains only required ''neutral'' semantics.
@@ -103,7 +103,7 @@ binary relations: they could have multiple ancestors/children nodes.
 
 For example, consider a TA between the L- and I-nodes in the image below.
 
-![Alt text](docs_imgs%2Fdocs-ait-l2i.png)
+![Alt text](../docs_imgs/Fdocs-ait-l2i.png)
 
 The transition here is between L-node to I-node that indicate, that the speaker in the L-node asserted the statement that is reflected in 
 the corresponding I-node.
@@ -137,7 +137,7 @@ They give a clear indication on which content pieces are grouped into the same a
 
 <b>Lets wrap everything we discussed so far!</b> On the image below an example of a part of a graph is presented.
 
-![Alt text](docs_imgs%2Fdocs-ait-trans-props.png)
+![Alt text](../docs_imgs/docs-ait-trans-props.png)
 
 Let's break it down bit by bit: 
 
@@ -182,7 +182,7 @@ empty_xaif_example = {
 
 THe <i>AIF</i> key contains the argument graph (as was described before). For example, let's go back to the image
 that was presented:
-![Alt text](docs_imgs%2Fdocs-ait-trans-props.png)
+![Alt text](../docs_imgs/docs-ait-trans-props.png)
 
 The AIF representation of this graph would include the following:
 
