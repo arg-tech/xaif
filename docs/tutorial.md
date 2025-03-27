@@ -30,6 +30,12 @@ ADUs are like atoms in this theory: the smallest units to work with.
  
 xAIF is designed to handle more flexible and dynamic argument structures in environments of incremental processing. AIF imposes certain constraints, such as requiring relations to have exactly one consequent and at least one antecedent, and limiting interconnections between propositions to relations. While these constraints are valuable in a fully formed argument structure, they can be too restrictive for environments where arguments are being built piecemeal or where intermediate annotations are needed. This is where xAIF comes in. It extends the AIF to allow for both **underspecified** and **overspecified** argumentation structures, making it a more versatile tool for argumentation representation.
 
+### Features of xAIF:
+1. **Underspecification**: Some constraints present in basic AIF (such as the number of antecedents or consequents in a relation) are relaxed, allowing for incomplete or evolving argumentation structures.
+2. **Overspecification**: Additional structural markup can be added beyond the standard AIF, which can help represent intermediate discourse annotations that go beyond the formal structure of arguments.
+3. **JSON-Based**: xAIF is represented in a convenient JSON format, making it easy to handle programmatically and compatible with a wide range of tools and platforms.
+4. **Interlingua for Argument Mining**: xAIF serves as the interlingua for the open argument mining framework, facilitating both input and output for all its modules.
+
 #### What is Argumentative Discourse Unit (ADU)
 
 ADU is a text span which has a propositional content anchored (attached/grouped to) in either the locution (text phrase) itself or a
@@ -67,7 +73,7 @@ For example, the sentence <i>'It has a glass elements, so it could brake.'</i> i
 <br>
 
 There are different possible relations that could be formed between ADUs. These relations are called 
-<i>Discrete Argumentative Function</i>. The full list and their description can be found [here](docs_add_info%2FIAT_guidelines_and_tutorials-2023-10.pdf), Section 1.1.
+<i>Discrete Argumentative Function</i>. The full list and their description can be found [here](https://www.arg-tech.org/wp-content/uploads/2011/09/aif-spec.pdf), Section 1.1.
 
 
 #### Types of ADUs
@@ -91,8 +97,7 @@ node in between.
 The reason for this complex structure is that ADUs can have a relation not only to other ADUs, but to the connections itself. For example, 
 ADU can attack the transition between two possible text spans, but not the content itself. Also, they could indicate grouping of different nodes and/or pairs of nodes
 into one argument with the described structure.
-Moreover, they can indicate the connection between I- and L-nodes, type of such connection and so on. Looks a bit complicated - but no worries, 
-it will be easier with the image example. It comes soon! :)
+
 
 <br>
 
@@ -129,7 +134,7 @@ pieces - how the argument is evolving, how people builds the argument, whether t
 
 #### Illocutionary Connections
 
-The final piece of the puzzle are YA-nodes. YA-nodes are the nodes that are constructed "in between" the TA-nodes and propositional relations
+YA-nodes are the nodes that are constructed "in between" the TA-nodes and propositional relations
 (RA, CA, MA). They are used to bound (or anchor) together pairs of arguments/text chunks/content pieces in a specific relation. 
 They give a clear indication on which content pieces are grouped into the same argument.
 
@@ -148,20 +153,14 @@ Let's break it down bit by bit:
 5. Propositional relationships are build (RA node on the example) creating the clear understanding of the specific type of the connection between the locutions.
 6. YA-nodes are added to group together pairs (or maybe more) nodes into the argument.
 
-In short, that is it! 
+
 
 <br>
 
-Now the xAIF representation of this theoretical framework will be presented.
 
 
 
 
-### Features of xAIF:
-1. **Underspecification**: Some constraints present in basic AIF (such as the number of antecedents or consequents in a relation) are relaxed, allowing for incomplete or evolving argumentation structures.
-2. **Overspecification**: Additional structural markup can be added beyond the standard AIF, which can help represent intermediate discourse annotations that go beyond the formal structure of arguments.
-3. **JSON-Based**: xAIF is represented in a convenient JSON format, making it easy to handle programmatically and compatible with a wide range of tools and platforms.
-4. **Interlingua for Argument Mining**: xAIF serves as the interlingua for the open argument mining framework, facilitating both input and output for all its modules.
 
 ## Structure of xAIF
 xAIF is represented as a JSON object that contains several key sections. Below is a breakdown of the structure, followed by an example of a sample xAIF representation.
@@ -415,7 +414,7 @@ Actual actors are stored in 'mentions' key. The 'mentions' value is a list of di
 
 ```
 
-#### Basic xAIF Example
+#### Basic xAIF Example with data
 ```json
 {
   "AIF": {
