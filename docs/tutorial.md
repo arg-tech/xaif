@@ -103,7 +103,7 @@ binary relations: they could have multiple ancestors/children nodes.
 
 For example, consider a TA between the L- and I-nodes in the image below.
 
-![Alt text](../docs_imgs/Fdocs-ait-l2i.png)
+![Alt text](../docs_imgs/docs-ait-l2i.png)
 
 The transition here is between L-node to I-node that indicate, that the speaker in the L-node asserted the statement that is reflected in 
 the corresponding I-node.
